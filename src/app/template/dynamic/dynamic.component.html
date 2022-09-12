@@ -1,1 +1,56 @@
-<p>dynamic works!</p>
+<h2>Template: <small>Dinámicos</small></h2>
+<hr>
+
+<form (ngSubmit)="save()" #dynamicForm="ngForm">
+  <!-- nombre -->
+  <div class="mb-3 row">
+    <label for="nombrre" class="col-sm-3 col-form-lable">Nombre*</label>
+    <div class="col-sm-9">
+      <input class="form-control"
+             type="text"
+             placeholder=" Nombre"
+             name="name"
+             [(ngModel)]="user.name"
+             required>
+      <div *ngIf="dynamicForm.invalid && dynamicForm.touched" class="form-text text-danger">
+        <span >Campo obligatorio</span>
+      </div>
+    </div>
+  </div>
+  <!-- Agragar favorito -->
+  <div class="mb-3 row">
+    <label for="nombrre" class="col-sm-3 col-form-lable">Agregar*</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input class="form-control"
+             type="text"
+             placeholder=" Agregar favorito"
+             name="add"
+             [(ngModel)]="newBook"
+             (keyup.enter)="addBook()"
+            >
+            <button (click)="addBook()" class="btn btn-outline-primary" type="button" id="button-addon1">Agregar</button>
+      </div>
+    </div>
+  </div>
+  <!-- lista favoritos -->
+  <div class="mb-3 row">
+    <label for="nombrre" class="col-sm-3 col-form-lable">Favoritos</label>
+    <div class="col-sm-9">
+      <div class="input-group mb-1" *ngFor="let fav of user.favorites; let i = index">
+        <input class="form-control"
+               [(ngModel)]="fav.name"
+               name="favBook_{{i}}">   
+        <button (click)="delete(i)" class="btn btn-outline-danger" type="button" id="button-addon2">Eliminar</button> 
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button [disabled]="dynamicForm.invalid"  type="button" (click)="save()" class="btn btn-primary float-end">Guardar</button>
+    </div>
+  </div>
+</form>
+
+<pre>{{user | json}}</pre>

@@ -52,4 +52,4 @@ Para facilitar el control de errores se puede enviar el formulario al componente
 
 ## Directiva customizadas: 
 
-Las directivas customizadas sirven para validar nuestro formulario según las necesidades que tengamos. Para ello vamos a crear la directiva. *.directive.ts* e importarla en las declaraciones del module que corresponda
+Las directivas customizadas sirven para validar nuestro formulario según las necesidades que tengamos. Para ello vamos a crear la directiva. *.directive.ts* e importarla en las declaraciones del module que corresponda.
