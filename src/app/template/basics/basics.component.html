@@ -1,1 +1,84 @@
-<p>basics works!</p>
+<h2>Template: Básicos</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <!-- opción sin mandarlo al ts a taves del ViewChild -->
+    <!-- <form (ngSubmit)="save(myForm)" #myForm="ngForm"> -->
+    <!-- opción con ViewChild -->
+    <form (ngSubmit)="save()" #myForm="ngForm" autocomplete="off">
+      <!-- Campo de producto -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label" for="product">Producto*</label>
+        <div class="col-sm-9">
+          <input type="text"
+                 class="form-control"
+                 [ngModel]="initialForm.product"
+                 name="product"
+                 placeholder="Nombre del producto"
+                 required
+                 minlength="3">
+          <div class="form-text text-danger">
+            <span *ngIf="controlName()">Mínimo 3 letras</span>
+          </div>
+        </div>
+      </div>
+      <!-- campo del precio -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label" for="price">Precio*</label>
+        <div class="col-sm-9">
+          <input type="number"
+                 class="form-control"
+                 
+                 [ngModel]="initialForm.price"
+                 name="price"
+                 placeholder="Precio del producto"
+                 required
+                 minlength="1"
+                 value=">=0">
+           <div class="form-text text-danger">
+            <span *ngIf="controlPrice()">El precio debe ser de al menos 0€</span>
+          </div>
+        </div>
+      </div>
+      <!-- campo de las existencias -->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label" for="stock">Existencias*</label>
+        <div class="col-sm-9">
+          <input type="number"
+                 ngModel
+                 name="stock"
+                 customMin
+                 [ngModel]="initialForm.stock"
+                 [min]="0"
+                 class="form-control"
+                 placeholder="Existencias del producto"
+                 required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button [disabled]="myForm.invalid" type="submit" class="btn btn-primary float-end">Añadir</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{myForm.valid}}</pre>
+    
+    <span>Pristine</span>
+    <pre>{{myForm.pristine}}</pre>
+
+    <span>Touched</span>
+    <pre>{{myForm.touched}}</pre>
+    
+    <span>Value</span>
+    <pre>{{myForm.value | json}}</pre>
+
+  </div>
+</div>
