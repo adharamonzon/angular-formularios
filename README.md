@@ -53,3 +53,17 @@ Para facilitar el control de errores se puede enviar el formulario al componente
 ## Directiva customizadas: 
 
 Las directivas customizadas sirven para validar nuestro formulario según las necesidades que tengamos. Para ello vamos a crear la directiva. *.directive.ts* e importarla en las declaraciones del module que corresponda.
+
+  ## Formularios Reactivos
+
+Para utilizar los formularios reactivos debemos importar el módulo **ReactiveFormsModule** de esta manera importamos en nuestro archivo .ts **FormControl** con el que podemos declarar los campos de nuestro formulario: 
+  *basicForm : FormGroup = new FormGrout({'name': new FormControl('nombre')})*
+Esto se puede hacer complejo si el formulario es muy extenso, por lo que se pueden declarar los campos del formlario con el **FormBuilder** 
+Para ello hay que importar el servicio en el constructor del *FormBuilder* y luego generar el objeto: 
+  *basicForm : FormGroup = this.formBuilder.group({name: 'nombre', validaciones, validaciones asíncronas })*
+
+Para las **validaciones síncronas** : 
+  *name: ['name', Validators.requider]*
+Se marcan en el areglo tral el valor de la propeidad, hay que utilizar el *Validators* de angular/forms.
+Si vamos a marcar más de UN VALIDADOR SÍNCRONO es importante meterlos dentro de un arreglo, ya que si lo separamos por comas estaremos indicando que el siguiente es un validador asíncrono.
+  *name: ['name', V[alidators.requider, Validators.minLength(3)]]*

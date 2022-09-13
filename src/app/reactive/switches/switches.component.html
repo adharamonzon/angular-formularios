@@ -1,1 +1,74 @@
-<p>switches works!</p>
+<h2>Reactivos: <small>Switches</small></h2>
+<hr>
+
+<form>
+  <!-- form RADIO -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-lable">Género</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input class="form-check-input"
+               type="radio"
+               value="F"
+               name="gender"
+               id="fem">
+        <label class="form-check-label" for="fem">
+          Femenino
+        </label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input"
+               type="radio"
+               value="M"
+               name="gender"
+               id="masc">
+        <label class="form-check-label" for="masc">
+          Masculino
+        </label>
+      </div>
+    </div>
+  </div>
+  <!-- from SWITCH -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-lable">Notificaciones</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch">
+        <input class="form-check-input"
+               type="checkbox"
+               role="switch"
+               id="notificationCheck">
+        <label class="form-check-label" for="notificationCheck">Quiero recibir notificaciones</label>
+      </div>
+    </div>
+  </div>
+  <!-- form CHECK  -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-lable"></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input class="form-check-input"
+               type="checkbox"
+               id="terms">
+        <label class="form-check-label" for="terms">
+          Términos y condiciones
+        </label>
+      </div>
+    </div>
+  </div> 
+  <!-- botón -->
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary float-end">Guardar</button>
+    </div>
+  </div>
+</form>
+<!-- 
+<h5>valor del formulario</h5>
+<pre>{{SwitchForm.value | json}}</pre>
+<br>
+<h5>User</h5>
+<pre>{{user | json}}</pre>
+<br>
+<h5>Valid</h5>
+<pre>{{SwitchForm.valid}}</pre> -->
