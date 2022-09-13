@@ -56,7 +56,7 @@ Las directivas customizadas sirven para validar nuestro formulario según las ne
 
   ## Formularios Reactivos
 
-Para utilizar los formularios reactivos debemos importar el módulo **ReactiveFormsModule** de esta manera importamos en nuestro archivo .ts **FormControl** con el que podemos declarar los campos de nuestro formulario: 
+Para utilizar los formularios reactivos debemos importar el módulo **ReactiveFormsModule** de esta manera importamos en nuestro archivo .ts **FormControl** con el que podemos declarar los campos por defecto de nuestro formulario: 
   *basicForm : FormGroup = new FormGrout({'name': new FormControl('nombre')})*
 Esto se puede hacer complejo si el formulario es muy extenso, por lo que se pueden declarar los campos del formlario con el **FormBuilder** 
 Para ello hay que importar el servicio en el constructor del *FormBuilder* y luego generar el objeto: 

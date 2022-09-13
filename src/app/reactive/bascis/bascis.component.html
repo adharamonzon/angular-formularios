@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col">
-    <form autocomplete="off" [formGroup]="basicForm">
+    <form (ngSubmit)="save()" autocomplete="off" [formGroup]="basicForm">
       <!-- Campo de producto -->
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label" for="product">Producto*</label>
@@ -14,7 +14,7 @@
                  name="product"
                  placeholder="Nombre del producto">
           <div class="form-text text-danger">
-            <span>Mínimo 3 letras</span>
+            <span *ngIf="formValid('name')">Mínimo 3 letras</span>
           </div>
         </div>
       </div>
@@ -27,7 +27,7 @@
                  formControlName="price"
                  placeholder="Precio del producto">
            <div class="form-text text-danger">
-            <span>El precio debe ser de al menos 0€</span>
+            <span *ngIf="formValid('price')">El precio debe ser de al menos 1€</span>
           </div>
         </div>
       </div>
@@ -39,6 +39,9 @@
                  class="form-control"
                  formControlName="stock"
                  placeholder="Existencias del producto">
+           <div class="form-text text-danger">
+            <span *ngIf="formValid('stock')">Sin stock</span>
+          </div>
         </div>
       </div>
 
