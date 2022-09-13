@@ -1,7 +1,7 @@
 <h2>Reactivos: <small>Switches</small></h2>
 <hr>
 
-<form>
+<form [formGroup]="switchForm">
   <!-- form RADIO -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-lable">Género</label>
@@ -10,7 +10,7 @@
         <input class="form-check-input"
                type="radio"
                value="F"
-               name="gender"
+               formControlName="gender"
                id="fem">
         <label class="form-check-label" for="fem">
           Femenino
@@ -21,7 +21,7 @@
         <input class="form-check-input"
                type="radio"
                value="M"
-               name="gender"
+               formControlName="gender"
                id="masc">
         <label class="form-check-label" for="masc">
           Masculino
@@ -37,6 +37,7 @@
         <input class="form-check-input"
                type="checkbox"
                role="switch"
+               formControlName="notifications"
                id="notificationCheck">
         <label class="form-check-label" for="notificationCheck">Quiero recibir notificaciones</label>
       </div>
@@ -49,6 +50,7 @@
       <div class="form-check">
         <input class="form-check-input"
                type="checkbox"
+               formControlName="terms"
                id="terms">
         <label class="form-check-label" for="terms">
           Términos y condiciones
@@ -59,16 +61,16 @@
   <!-- botón -->
   <div class="row">
     <div class="col">
-      <button class="btn btn-primary float-end">Guardar</button>
+      <button type="submit" (click)="save()" class="btn btn-primary float-end">Guardar</button>
     </div>
   </div>
 </form>
-<!-- 
+
 <h5>valor del formulario</h5>
-<pre>{{SwitchForm.value | json}}</pre>
+<pre>{{switchForm.value | json}}</pre>
 <br>
 <h5>User</h5>
 <pre>{{user | json}}</pre>
 <br>
 <h5>Valid</h5>
-<pre>{{SwitchForm.valid}}</pre> -->
+<pre>{{switchForm.valid}}</pre>
