@@ -2,16 +2,18 @@
 <h2>Template: <small>Dinámicos</small></h2>
 <hr>
 
-<form>
+<form (ngSubmit)="save()" [formGroup]="dynamicForm">
   <!-- nombre -->
   <div class="mb-3 row">
     <label for="nombrre" class="col-sm-3 col-form-lable">Nombre*</label>
     <div class="col-sm-9">
       <input class="form-control"
              type="text"
+             formControlName="name"
+             name="name"
              placeholder=" Nombre">
       <div class="form-text text-danger">
-        <span >Campo obligatorio</span>
+        <span *ngIf="inputValid('name')">Campo obligatorio</span>
       </div>
     </div>
   </div>
@@ -21,28 +23,38 @@
     <div class="col-sm-9">
       <div class="input-group">
         <input class="form-control"
-             type="text"
-             placeholder=" Agregar favorito">
-            <button class="btn btn-outline-primary" type="button" id="button-addon1">Agregar</button>
+               type="text"
+               [formControl]="newFav"
+               placeholder=" Agregar favorito"
+               (keyup.enter)="addFav()">
+            <button (click)="addFav()" class="btn btn-outline-primary" type="button" id="button-addon1">Agregar</button>
       </div>
     </div>
   </div>
   <!-- lista favoritos -->
   <div class="mb-3 row">
     <label for="nombrre" class="col-sm-3 col-form-lable">Favoritos</label>
-    <!-- <div class="col-sm-9">
-      <div class="input-group mb-1" *ngFor="let fav of user.favorites; let i = index">
-        <input class="form-control">   
+    <div class="col-sm-9" formArrayName="favorites">
+      <div class="input-group mb-1" *ngFor="let fav of favoritesArr.controls; let i = index">
+        <input class="form-control" [formControlName]="i">   
         <button (click)="delete(i)" class="btn btn-outline-danger" type="button" id="button-addon2">Eliminar</button> 
       </div>
-    </div> -->
+    </div>
   </div>
 
   <div class="row">
     <div class="col-sm-12">
-      <button type="button" class="btn btn-primary float-end">Guardar</button>
+      <button (click)="save()" type="button" class="btn btn-primary float-end">Guardar</button>
     </div>
   </div>
 </form>
 
-<!-- <pre>{{user | json}}</pre> -->
+<span>Valid</span>
+<pre>{{dynamicForm.valid}}</pre>
+
+<span>Value</span>
+<pre>{{dynamicForm.value | json}}</pre>
+
+<span>Agregar Libro</span>
+<pre>{{newFav.valid}}</pre>
+<pre>{{newFav.value}}</pre>

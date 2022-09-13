@@ -56,8 +56,8 @@ Las directivas customizadas sirven para validar nuestro formulario según las ne
 
   ## Formularios Reactivos
 
-Para utilizar los formularios reactivos debemos importar el módulo **ReactiveFormsModule** de esta manera importamos en nuestro archivo .ts **FormControl** con el que podemos declarar los campos por defecto de nuestro formulario: 
-  *basicForm : FormGroup = new FormGrout({'name': new FormControl('nombre')})*
+Para utilizar los formularios reactivos debemos importar el módulo **ReactiveFormsModule** de esta manera importamos en nuestro archivo .ts **FormControl** con el que podemos declarar los campos por defecto de nuestro formulario dentro de un **FormGroup**: 
+  *basicForm : FormGroup = new FormGroup({'name': new FormControl('nombre')})*
 Esto se puede hacer complejo si el formulario es muy extenso, por lo que se pueden declarar los campos del formlario con el **FormBuilder** 
 Para ello hay que importar el servicio en el constructor del *FormBuilder* y luego generar el objeto: 
   *basicForm : FormGroup = this.formBuilder.group({name: 'nombre', validaciones, validaciones asíncronas })*
@@ -67,3 +67,8 @@ Para las **validaciones síncronas** :
 Se marcan en el areglo tral el valor de la propeidad, hay que utilizar el *Validators* de angular/forms.
 Si vamos a marcar más de UN VALIDADOR SÍNCRONO es importante meterlos dentro de un arreglo, ya que si lo separamos por comas estaremos indicando que el siguiente es un validador asíncrono.
   *name: ['name', V[alidators.requider, Validators.minLength(3)]]*
+
+También se pueden declarar dentro del *FormGroup* de angular un **array**, donde se especifican cada elemento: 
+  *list: this.fb.array([], Validatros.required)*
+  Dentro del array, podemos es un formControl donde podemos poner otro array con cada elemento: 
+    *.array(['nombre',validadores sincronos, validadodes asincrnos], ['nombre 2' , , ])*
