@@ -1,0 +1,92 @@
+<h2>Validaciones Reactivas</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <form (ngSubmit)="submitForm()" autocomplete="off" [formGroup]="reactiveForm">
+      <!-- campo nombre -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Nombre*</label>
+        <div class="col-sm-9">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Nombre del usuario"
+                 formControlName="name">
+          <span *ngIf="nameInvalid('name')" class="form-text text-danger">Debe tener formato nombre y apellido</span>
+        </div>
+      </div>
+
+      <!-- campo email -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email*</label>
+        <div class="col-sm-9">
+          <input type="email"
+                 class="form-control"
+                 formControlName="email"
+                 placeholder="Email del usuario">
+          <span *ngIf="nameInvalid('email')" class="form-text text-danger">Email obligatorio</span>
+        </div>
+      </div>
+
+      <!-- campo username -->
+      <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Username</label>
+        <div class="col-sm-9">
+          <input type="text"
+                 class="form-control"
+                 formControlName="username"
+                 placeholder="Username"> 
+          <span *ngIf="nameInvalid('username')" class="form-text text-danger">Username no puede ser strider</span>
+         </div>
+      </div>
+
+    <!-- campo password -->
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label">Password</label>
+      <div class="col-sm-9">
+        <input type="password"
+               class="form-control"
+               formControlName="password"
+               placeholder="Contraseña">
+        <span *ngIf="nameInvalid('password')" class="form-text text-danger">Contraseña Obligatoria, al menos 6 caracteres</span>
+      </div>
+    </div>
+
+    <!-- campo confirmar password -->
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label">Confirmar Password</label>
+      <div class="col-sm-9">
+        <input type="password"
+               class="form-control"
+               formControlName="confirmPassword"
+               placeholder="Confirma la contraseña">
+        <span *ngIf="nameInvalid('confirmPassword')" class="form-text text-danger">Las contraseñas no coinciden</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button type="submit" (click)="submitForm()" class="btn btn-primary float-end">Registrarse</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<h6>Valid</h6>
+<pre>{{reactiveForm.valid}}</pre>
+
+<h6>Nombre </h6>
+<pre>{{reactiveForm.controls['name'].errors | json}}</pre>
+
+<h6>Email </h6>
+<pre>{{reactiveForm.controls['email'].errors | json}}</pre>
+
+<h6>Username </h6>
+<pre>{{reactiveForm.controls['username'].errors | json}}</pre>
+
+<h6>Password</h6>
+<pre>{{reactiveForm.controls['password'].errors | json}}</pre>
+
+<h6>Confirm Password</h6>
+<pre>{{reactiveForm.controls['confirmPassword'].errors | json}}</pre>
