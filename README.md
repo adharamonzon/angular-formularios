@@ -72,3 +72,16 @@ También se pueden declarar dentro del *FormGroup* de angular un **array**, dond
   *list: this.fb.array([], Validatros.required)*
   Dentro del array, podemos es un formControl donde podemos poner otro array con cada elemento: 
     *.array(['nombre',validadores sincronos, validadodes asincrnos], ['nombre 2' , , ])*
+
+
+**Validaciones asíncronas**: 
+Para las validaciones asíncronas nos creamos un servicio de validación donde se van a ejecutar las llamadas al back necesarias para hacer la validación. 
+En este servicio es importante importar e IMPLEMENTAR en la función el *AsyncValidator* de AngularForms. 
+  *export class EmailValidatorService implements AsyncValidator { constructor (private http : HttpClient){}}*
+
+Es neceseario en este servicio meter la interfaz de **validate** 
+  *validate(control: AbstractControl): Promise<ValidationErrors | null> |Observable<ValidationErrors | null> {}*
+Esto nos puede devolver una promesa o un obsevable. 
+
+Este servicio nuevo es para una validación asíncrona que depende de otro servicio adicional (en este caso http). 
+Si se necesita hacer una validación asíncrona que no depende de otro servicio (ej. http), se puede hacer en el servicio con todas las validaciones. 

@@ -24,7 +24,7 @@
                  class="form-control"
                  formControlName="email"
                  placeholder="Email del usuario">
-          <span *ngIf="nameInvalid('email')" class="form-text text-danger">Email obligatorio</span>
+          <span *ngIf="nameInvalid('email')" class="form-text text-danger">{{emailErrorMsg}}</span>
         </div>
       </div>
 
@@ -66,7 +66,7 @@
 
     <div class="row">
       <div class="col">
-        <button type="submit" (click)="submitForm()" class="btn btn-primary float-end">Registrarse</button>
+        <button type="submit" [disabled]="reactiveForm.valid" (click)="submitForm()" class="btn btn-primary float-end">Registrarse</button>
       </div>
     </div>
 
@@ -75,6 +75,10 @@
 
 <h6>Valid</h6>
 <pre>{{reactiveForm.valid}}</pre>
+<h6>Status</h6>
+<pre>{{reactiveForm.status}}</pre>
+<h6>Form errors</h6>
+<pre>{{reactiveForm.errors | json}}</pre>
 
 <h6>Nombre </h6>
 <pre>{{reactiveForm.controls['name'].errors | json}}</pre>

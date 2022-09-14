@@ -26,7 +26,8 @@ export class ValidatorService {
     return (control : AbstractControl) : ValidationErrors | null => {
       const pass1 = control.get(pass);
       const pass2 = control.get(passConfirm);
-      if (pass1 !== pass2) {
+      
+      if (pass1?.value !== pass2?.value) {
         control.get(passConfirm)?.setErrors({noSame: true})
         return {noSame : true}
       }
