@@ -55,4 +55,9 @@ export class SidemenuComponent {
       route: './auth/register'
     }
   ]
+  anidados: MenuItem = 
+  {
+    text: 'Selectores anidados',
+    route: './reactive/anidados'
+  }
 }
